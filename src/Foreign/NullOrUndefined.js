@@ -1,3 +1,3 @@
-exports['null'] = null;
+export var _null = null;
 
-exports['undefined'] = undefined;
+export var _undefined = undefined;

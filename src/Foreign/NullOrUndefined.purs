@@ -1,4 +1,8 @@
-module Foreign.NullOrUndefined where
+module Foreign.NullOrUndefined
+  ( readNullOrUndefined
+  , undefined
+  , null
+  ) where
 
 import Prelude
 
@@ -10,6 +14,12 @@ readNullOrUndefined :: forall a. (Foreign -> F a) -> Foreign -> F (Maybe a)
 readNullOrUndefined _ value | isNull value || isUndefined value = pure Nothing
 readNullOrUndefined f value = Just <$> f value
 
-foreign import undefined :: Foreign
+foreign import _undefined :: Foreign
 
-foreign import null :: Foreign
+undefined :: Foreign
+undefined = _undefined
+
+foreign import _null :: Foreign
+
+null :: Foreign
+null = _null
